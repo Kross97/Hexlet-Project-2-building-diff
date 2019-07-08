@@ -2,7 +2,7 @@ install:
 	npm install
 
 start:
-	npx babel-node src/bin/brain-even.js
+	npx babel-node src/bin/gendiff -h
 
 publish : 
 	npm publish --dry-run
