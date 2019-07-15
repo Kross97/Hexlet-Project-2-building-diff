@@ -1,6 +1,5 @@
 import _ from 'lodash';
-import fs from 'fs';
-import path from 'path';
+import parse from './parses';
 
 const customSwitch = (element) => {
   switch (element.type) {
@@ -75,10 +74,8 @@ const makeAst = (object1, object2) => {
 };
 
 const genDiff = (filepath1, filepath2) => {
-  const file1 = fs.readFileSync(path.resolve('src/__tests__/__fixtures__', filepath1), 'utf-8');
-  const file2 = fs.readFileSync(path.resolve('src/__tests__/__fixtures__', filepath2), 'utf-8');
-  const object1 = JSON.parse(file1);
-  const object2 = JSON.parse(file2);
+  const object1 = parse(filepath1);
+  const object2 = parse(filepath2);
 
   const ast = makeAst(object1, object2);
   const renderedResult = customRender(ast);
