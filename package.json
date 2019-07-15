@@ -2,13 +2,14 @@
   "name": "front2",
   "version": "1.1.1",
   "description": "",
-  "main": "babel.config.js",
+  "main": "dist/files/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "watch": "jest --watch"
   },
-"files": [
+  "files": [
     "dist"
   ],
   "repository": {
@@ -22,19 +23,23 @@
   },
   "homepage": "https://github.com/Kross97/frontend-project-lvl2#readme",
   "dependencies": {
-    "commander": "^2.20.0"
+    "commander": "^2.20.0",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.13",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.0",
-    "@babel/preset-env": "^7.5.0",
     "@babel/node": "^7.5.0",
-    "cross-env": "^5.2.0",
+    "@babel/preset-env": "^7.5.0",
     "babel-eslint": "^10.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-lodash-fp": "^2.2.0-a1"
+    "eslint-plugin-lodash-fp": "^2.2.0-a1",
+    "jest": "^24.8.0"
   }
 }
