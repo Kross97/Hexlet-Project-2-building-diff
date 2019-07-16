@@ -1,11 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
+import ini from 'ini';
 
 const distp = (format) => {
   const raspr = {
     '.json': JSON.parse,
     '.yml': yaml.safeLoad,
+    '.ini': ini.parse,
   };
   return raspr[format];
 };
