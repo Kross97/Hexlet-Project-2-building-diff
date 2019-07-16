@@ -2,7 +2,7 @@ install:
 	npm install
 
 start:
-	npx babel-node src/bin/gendiff before.yml after.yml
+	npx babel-node src/bin/gendiff before.ini after.ini
 
 publish: 
 	npm publish --dry-run
