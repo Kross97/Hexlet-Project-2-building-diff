@@ -3,19 +3,19 @@ import path from 'path';
 import yaml from 'js-yaml';
 import ini from 'ini';
 
-const distp = (format) => {
-  const raspr = {
+const getParseFormat = (format) => {
+  const formatParsers = {
     '.json': JSON.parse,
     '.yml': yaml.safeLoad,
     '.ini': ini.parse,
   };
-  return raspr[format];
+  return formatParsers[format];
 };
 
 
 export default (filepath) => {
   const file = fs.readFileSync(path.resolve('src/__tests__/__fixtures__', filepath), 'utf-8');
   const format = path.extname(filepath);
-  const parser = distp(format);
+  const parser = getParseFormat(format);
   return parser(file);
 };
