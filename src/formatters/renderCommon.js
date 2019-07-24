@@ -1,28 +1,33 @@
 import _ from 'lodash';
 
-const makeString = (value) => {
-  const result = !_.isObject(value) ? value : Object.keys(value).map(key => `{\n      ${key}: ${value[key]}\n}`).join('');
+const calculateTabs = depth => ' '.repeat(2 * depth);
+
+const makeString = (value, depth) => {
+  const openingTab = calculateTabs(depth + 1);
+  const closingTab = calculateTabs(depth);
+  const result = !_.isObject(value) ? value : `{\n${[...Object.keys(value)].map(key => `${openingTab}${key}: ${value[key]}`)}\n${closingTab}}`;
   return result;
 };
 
-const render = (element) => {
+const render = (element, depth) => {
+  const tab = calculateTabs(depth);
   switch (element.type) {
     case 'new':
-      return `   + ${element.key}: ${makeString(element.value)}\n`;
+      return `${tab}+ ${element.key}: ${makeString(element.value, depth)}`;
 
     case 'deleted':
-      return `   - ${element.key}: ${makeString(element.value)}\n`;
+      return `${tab}- ${element.key}: ${makeString(element.value, depth)}`;
 
     case 'unchanged':
-      return `      ${element.key}: ${makeString(element.value)}\n`;
+      return `${tab}  ${element.key}: ${makeString(element.value, depth)}`;
 
     case 'changed':
-      return [`     + ${element.key}: ${makeString(element.afterValue)} \n`, `    - ${element.key}: ${makeString(element.beforeValue)}\n`];
+      return [`${tab}+ ${element.key}: ${makeString(element.afterValue, depth)}`, `${tab}- ${element.key}: ${makeString(element.beforeValue, depth)}`].join('\n');
     case 'parent':
-      return `     ${element.key}: {\n${element.children.map(el => render(el))}}\n`;
+      return `${tab} ${element.key}: {\n${element.children.map(el => render(el, depth + 1)).join('\n')}\n}`;
     default:
       throw Error(`${element.type} is uncorrect key type!!!`);
   }
 };
 
-export default ast => `{\n${ast.map(el => render()(el))}}`;
+export default ast => `{\n${ast.map(el => render(el, 1)).join('\n')}\n}`;

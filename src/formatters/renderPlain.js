@@ -13,22 +13,20 @@ const getFullKey = (key, el) => {
 const render = (element, key) => {
   switch (element.type) {
     case 'new':
-      return `Property ${key} was added with value: ${makeString(element.value)} \n`;
+      return `Property ${key} was added with value: ${makeString(element.value)}`;
 
     case 'deleted':
-      return `Property ${key} was removed \n`;
-
-    case 'unchanged':
-      return `Property ${key} was unchanged \n`;
+      return `Property ${key} was removed`;
 
     case 'changed':
-      return `Property ${key} was updated. From ${makeString(element.beforeValue)} to ${makeString(element.afterValue)} \n`;
+      return `Property ${key} was updated. From ${makeString(element.beforeValue)} to ${makeString(element.afterValue)}`;
+
     case 'parent':
-      return `${element.children.map(el => render(el, getFullKey(key, el)))}`;
+      return `${element.children.filter(el => el.type !== 'unchanged').map(el => render(el, getFullKey(key, el))).join('\n')}`;
 
     default:
       throw Error(`${element.type} is uncorrect key type!!!`);
   }
 };
 
-export default ast => `${ast.map(el => render(el, el.key))}`;
+export default ast => `${ast.map(el => render(el, el.key)).join('\n')}`;
