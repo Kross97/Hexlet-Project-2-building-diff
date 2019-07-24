@@ -1,7 +1,7 @@
 {
   "name": "front2",
-  "version": "1.1.1",
-  "description": "",
+  "version": "1.2.2",
+  "description": "lvl2 , project2, frontend",
   "main": "dist/files/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production babel src --out-dir dist --source-maps inline",
@@ -16,6 +16,11 @@
     "type": "git",
     "url": "git+https://github.com/Kross97/frontend-project-lvl2.git"
   },
+  "keywords": [
+    "calculator",
+    "differences",
+    "level2"
+  ],
   "author": "Nikita Bezhenar'",
   "license": "ISC",
   "bugs": {
