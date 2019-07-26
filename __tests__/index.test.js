@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import genDiff from '..';
+import genDiff from '../src';
 
 const filesForTests = [
   ['before.json', 'after.json', 'common', 'result-common.txt'],
