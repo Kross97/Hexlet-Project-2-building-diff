@@ -14,7 +14,7 @@ const getParseFormat = (format) => {
 
 
 export default (filepath) => {
-  const file = fs.readFileSync(path.resolve('src/__tests__/__fixtures__', filepath), 'utf-8');
+  const file = fs.readFileSync(path.resolve('__tests__/__fixtures__/', filepath), 'utf-8');
   const format = path.extname(filepath);
   const parser = getParseFormat(format);
   return parser(file);
