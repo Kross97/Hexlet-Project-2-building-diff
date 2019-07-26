@@ -3,10 +3,12 @@ import _ from 'lodash';
 const calculateTabs = depth => ' '.repeat(2 * depth);
 
 const makeString = (value, depth) => {
+  if (!_.isObject(value)) {
+    return value;
+  }
   const openingTab = calculateTabs(depth + 1);
   const closingTab = calculateTabs(depth);
-  const result = !_.isObject(value) ? value : `{\n${[...Object.keys(value)].map(key => `${openingTab}${key}: ${value[key]}`)}\n${closingTab}}`;
-  return result;
+  return `{\n${[...Object.keys(value)].map(key => `${openingTab}${key}: ${value[key]}`)}\n${closingTab}}`;
 };
 
 const render = (element, depth) => {

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import parse from './parses';
-import getRender from '../formatters';
+import getRender from './formatters';
 
 const conditions = [
   {

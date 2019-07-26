@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import commander from 'commander';
-import genDiff from '../index';
+import genDiff from '..';
 
 
 const program = commander;
