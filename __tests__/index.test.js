@@ -21,4 +21,3 @@ test.each(filesForTests)('genDiff(%s,%s,%s)', (before, after, format, result) =>
 
   expect(genDiff(pathToBeforeFile, pathToAfterFile, format)).toEqual(referenceResult);
 });
-/
