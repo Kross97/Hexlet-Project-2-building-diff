@@ -30,4 +30,3 @@ const render = (element, key) => {
 };
 
 export default ast => `${ast.map(el => render(el, el.key)).join('\n')}`;
-.
