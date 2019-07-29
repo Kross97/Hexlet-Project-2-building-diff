@@ -33,3 +33,4 @@ const render = (element, depth) => {
 };
 
 export default ast => `{\n${ast.map(el => render(el, 1)).join('\n')}\n}`;
+.

@@ -19,3 +19,4 @@ export default (filepath) => {
   const parser = getParseFormat(format);
   return parser(file);
 };
+.

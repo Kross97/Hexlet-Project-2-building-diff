@@ -74,3 +74,4 @@ const genDiff = (filepath1, filepath2, format) => {
 };
 
 export default genDiff;
+.
