@@ -9,4 +9,3 @@ const renderFormats = {
 };
 
 export default (format = 'plain') => renderFormats[format];
-.
