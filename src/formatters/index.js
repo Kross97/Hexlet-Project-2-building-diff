@@ -8,4 +8,4 @@ const renderFormats = {
   json,
 };
 
-export default (format = 'plain') => renderFormats[format];
+export default (format = 'common') => renderFormats[format];
