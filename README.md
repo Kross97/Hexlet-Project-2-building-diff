@@ -2,5 +2,3 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/743fc87d7da33668091d/maintainability)](https://codeclimate.com/github/Kross97/frontend-project-lvl2/maintainability)
 
-
-npm ERR! You do not have permission to publish "diff-files". Are you logged in as the correct user? : diff-files
