@@ -2,7 +2,7 @@ install:
 	npm install
 
 start:
-	npx babel-node src/bin/gendiff --format common before-tree.json after-tree.json
+	npx babel-node src/bin/gendiff --format plain before-tree.json after-tree.json
 
 publish: 
 	npm publish --dry-run
