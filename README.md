@@ -2,6 +2,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/743fc87d7da33668091d/maintainability)](https://codeclimate.com/github/Kross97/frontend-project-lvl2/maintainability)
 
+ Step 1 : https://asciinema.org/a/6vSAIuAN1FiuGEVkvXwV4nbDJ
+
  Step 2 : https://asciinema.org/a/mEtgccnVZ3WhyUjkUPBAyKgjn
  
  Step 3 : https://asciinema.org/a/4g2lHSI9gnO7xEj4ZxIzdLIJr
