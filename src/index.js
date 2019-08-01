@@ -1,5 +1,7 @@
 import _ from 'lodash';
-import parse from './parses';
+import fs from 'fs';
+import path from 'path';
+import getParseFormat from './parses';
 import getRender from './formatters';
 
 const conditions = [
@@ -61,6 +63,13 @@ const makeAst = (object1, object2) => {
     const { diffType } = verifyKeysExistence(key, object1, object2);
     return [...acc, diffType(key, object1, object2, makeAst)];
   }, []);
+};
+
+const parse = (filepath) => {
+  const file = fs.readFileSync(filepath, 'utf-8');
+  const format = path.extname(filepath);
+  const parser = getParseFormat(format);
+  return parser(file);
 };
 
 const genDiff = (filepath1, filepath2, format) => {
