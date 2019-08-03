@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
-import getParseFormat from './parses';
+import getParseFormat from './parsers';
 import getRender from './formatters';
 
 const conditions = [
@@ -66,10 +66,10 @@ const makeAst = (object1, object2) => {
 };
 
 const parse = (filepath) => {
-  const file = fs.readFileSync(filepath, 'utf-8');
-  const format = path.extname(filepath);
-  const parser = getParseFormat(format);
-  return parser(file);
+  const fileContent = fs.readFileSync(filepath, 'utf-8');
+  const extension = path.extname(filepath);
+  const parsesObject = getParseFormat(extension);
+  return parsesObject(fileContent);
 };
 
 const genDiff = (filepath1, filepath2, format) => {
