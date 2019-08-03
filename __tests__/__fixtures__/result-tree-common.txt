@@ -1,34 +1,71 @@
 {
-   common: {
-      setting1: Value 1
-    - setting2: 200
-    + setting3: {
-      key: value
-    }
-    - setting3: true
-     setting6: {
-        key: value
-      + ops: vops
-}
-    + follow: false
-    + setting4: blah blah
-    + setting5: {
-      key5: value5
-    }
-}
-   group1: {
-    + baz: bars
-    - baz: bas
-      foo: bar
-    + nest: str
-    - nest: {
-      key: value
-    }
-}
-  - group2: {
-    abc: 12345
-  }
-  + group3: {
-    fee: 100500
-  }
-}
+
+    -  
+236
+    - 
+237
+    +     common: {
+238
+    +       setting1: Value 1
+239
+    +     - setting2: 200
+240
+    +     + setting3: {
+241
+    +         key: value
+242
+    +       }
+243
+    +     - setting3: true
+244
+    +       setting6: {
+245
+    +         key: value
+246
+    +       + ops: vops
+247
+    +      }
+248
+    +     + follow: false
+249
+    +     + setting4: blah blah
+250
+    +     + setting5: {
+251
+    +         key5: value5
+252
+    +       }
+253
+    +    }
+254
+    +     group1: {
+255
+    +     + baz: bars
+256
+    +     - baz: bas
+257
+    +       foo: bar
+258
+    +     + nest: str
+259
+    +     - nest: {
+260
+    +         key: value
+261
+    +       }
+262
+    +    }
+263
+    +   - group2: {
+264
+    +       abc: 12345
+265
+    +     }
+266
+    +   + group3: {
+267
+    +       fee: 100500
+268
+    +     }
+269
+    + }
