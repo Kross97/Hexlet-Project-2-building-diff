@@ -66,7 +66,7 @@ const makeAst = (object1, object2) => {
 };
 
 const parse = (filepath) => {
-  const fileContent = fs.readFileSync(filepath, 'utf-8');
+  const fileContent = fs.readFileSync(path.join(filepath), 'utf-8');
   const extension = path.extname(filepath);
   const parsesObject = getParseFormat(extension);
   return parsesObject(fileContent);
