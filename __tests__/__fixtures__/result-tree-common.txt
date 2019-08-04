@@ -15,7 +15,7 @@
     + setting5: {
         key5: value5
       }
-    }
+   }
     group1: {
     + baz: bars
     - baz: bas
@@ -24,7 +24,7 @@
     - nest: {
         key: value
       }
-    }
+   }
   - group2: {
       abc: 12345
     }
