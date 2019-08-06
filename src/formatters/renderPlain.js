@@ -5,28 +5,27 @@ const makeString = (value) => {
   return result;
 };
 
-const getFullKey = (key, el) => {
-  const result = [key, !_.isObject(el.value) ? el.key : getFullKey(el.key, el.value)].join('.');
-  return result;
+const render = (ast) => {
+  const iter = (data, path = '') => data.map((element) => {
+    switch (element.type) {
+      case 'new':
+        return `Property ${path}${element.key} was added with value: ${makeString(element.value)}`;
+
+      case 'deleted':
+        return `Property ${path}${element.key} was removed`;
+
+      case 'changed':
+        return `Property ${path}${element.key} was updated. From ${makeString(element.beforeValue)} to ${makeString(element.afterValue)}`;
+
+      case 'parent':
+        return `${iter(element.children.filter(el => el.type !== 'unchanged'), `${path}${element.key}.`).join('\n')}`;
+
+      default:
+        throw Error(`${element.type} is uncorrect key type!!!`);
+    }
+  });
+
+  return iter(ast).join('\n');
 };
 
-const render = (element, key) => {
-  switch (element.type) {
-    case 'new':
-      return `Property ${key} was added with value: ${makeString(element.value)}`;
-
-    case 'deleted':
-      return `Property ${key} was removed`;
-
-    case 'changed':
-      return `Property ${key} was updated. From ${makeString(element.beforeValue)} to ${makeString(element.afterValue)}`;
-
-    case 'parent':
-      return `${element.children.filter(el => el.type !== 'unchanged').map(el => render(el, getFullKey(key, el))).join('\n')}`;
-
-    default:
-      throw Error(`${element.type} is uncorrect key type!!!`);
-  }
-};
-
-export default ast => `${ast.map(el => render(el, el.key)).join('\n')}`;
+export default render;
